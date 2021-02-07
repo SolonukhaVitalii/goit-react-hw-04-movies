@@ -16,12 +16,12 @@ const App = () => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/" className="NavLink" activeClassName="NavLink--active">
+        <NavLink to="/movies" className="NavLink" activeClassName="NavLink--active">
           Movies
         </NavLink>
       </li>
       <li>
-        <NavLink to="/" className="NavLink" activeClassName="NavLink--active">
+        <NavLink to="/movies/:movieId" className="NavLink" activeClassName="NavLink--active">
           MovieDetails
         </NavLink>
       </li>

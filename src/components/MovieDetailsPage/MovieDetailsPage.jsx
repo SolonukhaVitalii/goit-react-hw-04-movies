@@ -7,8 +7,8 @@ import React from 'react';
 
 
 const MovieDetailsPage = () => {
-    return (
-      <h1>Cтраница с детальной информацией о кинофильме</h1>
+  return (
+    <h1>Cтраница с детальной информацией о кинофильме</h1>
       /*<Route path="/movies/:movieId/cast" component={Cast} />
       <Route path="/movies/:movieId/reviews" component={Reviews} />*/
     );
