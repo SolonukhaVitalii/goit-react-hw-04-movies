@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/MoviesPage/MoviesPage.module.css"],"names":[],"mappings":"AAAA,yBACE,WAAY,CACZ,wBACF","file":"5.c7e0342e.chunk.css","sourcesContent":[".Input {\r\n  width: 300px;\r\n  border: 2px solid #d3d3d3;\r\n}\r\n"]}
