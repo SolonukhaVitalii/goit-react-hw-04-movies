@@ -12,11 +12,34 @@ code {
     monospace;
 }
 
+ul {
+  display: flex;
+  background-color: #fff;
+  margin: 15px;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: #352f2f;
+  text-decoration: none;
+  list-style: none;
+  border-bottom: 2px solid #9c9c9c;
+}
+
+li {
+  font-weight: 500;
+  margin-right: 20px;
+}
+
 .NavLink {
   font-size: 20px;
   color: currentColor;
+  text-decoration: none;
 }
 
-.NavLink--active {
+.NavLinkactive {
   color: palevioletred;
+  font-weight: 700;
 }

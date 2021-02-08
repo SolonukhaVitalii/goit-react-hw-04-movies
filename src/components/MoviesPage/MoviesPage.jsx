@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
-class MoviesPage extends Component {
+
+class MoviePage extends Component {
     state = {
         movies: [],
     };
 
     async componentDidMount() {
-        const response = await Axios.get();
+        const response = await Axios.get(``);
         //console.log(response.data);
         this.setState({ movies: response.data })
     }
 
-    render() {
+  render() {
         return (
             <>
                 <h1>Cтраница поиска фильмов по ключевому слову</h1>
                 <ul>
                     {this.state.movies.map(movie => (
-                        <li key={movie.id}>{movie.title}</li>
+                      <li key={movie.id}>
+                        <Link to={`${this.props.math.url}`}>{movie.title}</Link>
+                      </li>
                     ))}
                 </ul>
             </>
@@ -27,8 +31,8 @@ class MoviesPage extends Component {
     }
 };
 
-MoviesPage.propTypes = {
+MoviePage.propTypes = {
     
 };
 
-export default MoviesPage;
+export default MoviePage;

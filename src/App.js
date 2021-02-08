@@ -11,24 +11,19 @@ const App = () => (
   <>
     <ul>
       <li>
-        <NavLink to="/" className="NavLink" activeClassName="NavLink--active">
+        <NavLink to="/" className="NavLink" activeClassName="NavLinkactive">
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/movies" className="NavLink" activeClassName="NavLink--active">
+        <NavLink to="/movies" className="NavLink" activeClassName="NavLinkactive">
           Movies
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/movies/:movieId" className="NavLink" activeClassName="NavLink--active">
-          MovieDetails
         </NavLink>
       </li>
     </ul>
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/movies" component={MoviesPage} />
+      <Route exact path="/movies" component={MoviesPage} />
       <Route path="/movies/:movieId" component={MovieDetailsPage} />
       <Route component={NotFoundPage} />
     </Switch>
