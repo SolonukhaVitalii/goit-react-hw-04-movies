@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
+
+const KEY = 'ab234249b42ad0b5c11163146e7a690b';
+
 class MovieDetailsPage extends Component {
   state = {
     movie: null,
@@ -10,7 +13,7 @@ class MovieDetailsPage extends Component {
 
   async componentDidMount() {
     const {movieId} = this.props.math.params
-    const response = await Axios.get(`https://api.themoviedb.org/3/movie/${movieId}`);
+    const response = await Axios.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US`);
     this.setState({...response.data });
     }
 

@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const KEY = '8498946f9c7874ef33ac19a931c494c9';
+//ab234249b42ad0b5c11163146e7a690b
+//https://api.themoviedb.org/3/movie/550?api_key=
+
+const KEY = 'ab234249b42ad0b5c11163146e7a690b';
 
 export const fetchTrending = () => {
   const API = `https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`;

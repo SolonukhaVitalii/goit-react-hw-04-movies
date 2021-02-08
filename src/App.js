@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import MoviesPage from './components/MoviesPage';
 import MovieDetailsPage from './components/MovieDetailsPage';
 import NotFoundPage from './components/NotFoundPage';
+import s from './App.module.css';
 
 
 
@@ -11,12 +12,12 @@ const App = () => (
   <>
     <ul>
       <li>
-        <NavLink to="/" className="NavLink" activeClassName="NavLinkactive">
+        <NavLink to="/" className={s.NavLink} activeClassName={s.NavLinkactive}>
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/movies" className="NavLink" activeClassName="NavLinkactive">
+        <NavLink to="/movies" className={s.NavLink} activeClassName={s.NavLinkactive}>
           Movies
         </NavLink>
       </li>

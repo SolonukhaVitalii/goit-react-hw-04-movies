@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 //import PropTypes from 'prop-types';
 
+const KEY = 'ab234249b42ad0b5c11163146e7a690b';
 
 class MoviePage extends Component {
     state = {
@@ -10,7 +11,7 @@ class MoviePage extends Component {
     };
 
     async componentDidMount() {
-        const response = await Axios.get(``);
+        const response = await Axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`);
         //console.log(response.data);
         this.setState({ movies: response.data })
     }
