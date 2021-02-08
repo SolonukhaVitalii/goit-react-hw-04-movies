@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default (NewComponent, { fetchData }) => 
+export default (NewComponent, { fetchData }) =>
   class ClassComponent extends Component {
     state = { data: null };
     componentDidMount = () => {
@@ -12,3 +12,4 @@ export default (NewComponent, { fetchData }) =>
       return <NewComponent data={data} {...this.props} />;
     }
   };
+  

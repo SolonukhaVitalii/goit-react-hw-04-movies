@@ -1,39 +1,70 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-//import PropTypes from 'prop-types';
+import queryString from 'query-string';
+import { fetchMovies } from '../../services/movie-api';
+import s from './MoviesPage.module.css';
 
-const KEY = 'ab234249b42ad0b5c11163146e7a690b';
+class MoviesPage extends Component {
+  state = { movies: [], query: '' };
 
-class MoviePage extends Component {
-    state = {
-        movies: [],
-    };
-
-    async componentDidMount() {
-        const response = await Axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${KEY}`);
-        //console.log(response.data);
-        this.setState({ movies: response.data })
+  componentDidMount = () => {
+    const queryParams = queryString.parse(this.props.location.search);
+    const { query } = queryParams;
+    if (query) {
+      fetchMovies(query).then(({ data }) => {
+        this.setState({ movies: data.results });
+      });
     }
+  };
+
+  handleChange = event => {
+    const target = event.target;
+    const value = target.value;
+    this.setState({ query: value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const { query } = this.state;
+    const { history } = this.props;
+    fetchMovies(query)
+      .then(({ data }) => {
+        this.setState({ movies: data.results, query: '' });
+      })
+      .then(
+        history.push({
+          pathname: this.props.location.pathname,
+          search: `query=${query}`,
+        }),
+      );
+  };
 
   render() {
-        return (
-            <>
-                <h1>Cтраница поиска фильмов по ключевому слову</h1>
-                <ul>
-                    {this.state.movies.map(movie => (
-                      <li key={movie.id}>
-                        <Link to={`${this.props.math.url}`}>{movie.title}</Link>
-                      </li>
-                    ))}
-                </ul>
-            </>
-        );
-    }
-};
+    const { movies } = this.state;
 
-MoviePage.propTypes = {
-    
-};
+    return (
+      <Fragment>
+        <form onSubmit={this.handleSubmit}>
+          <input className={s.Input} type="text" onChange={this.handleChange} />
+          <button type="submit">Search</button>
+        </form>
+        <ul>
+          {movies.map(el => (
+            <li key={el.id}>
+              <Link
+                to={{
+                  pathname: `/movies/${el.id}`,
+                  state: { from: this.props.location },
+                }}
+              >
+                {el.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Fragment>
+    );
+  }
+}
 
-export default MoviePage;
+export default MoviesPage;

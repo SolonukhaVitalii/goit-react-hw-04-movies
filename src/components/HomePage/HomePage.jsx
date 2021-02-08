@@ -1,16 +1,38 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { fetchTrending } from '../../services/movie-api';
 
-const HomePage = () => {
-    return (
-        <h1>
-         Домашняя страница со списком популярных кинофильмов 
-        </h1>
+class HomePage extends Component {
+  state = { trending: [] };
+  componentDidMount = () => {
+    fetchTrending().then(({ data }) =>
+      this.setState({ trending: data.results }),
     );
-};
-
-HomePage.propTypes = {
-    
-};
+  };
+  render() {
+    const { trending } = this.state;
+    return (
+      <Fragment>
+        <h1>Trending today</h1>
+        <ul>
+          {trending.map(el =>
+            el.media_type === 'movie' ? (
+              <li key={el.id}>
+                <Link
+                  to={{
+                    pathname: `/movies/${el.id}`,
+                    state: { from: this.props.location },
+                  }}
+                >
+                  {el.title}
+                </Link>
+              </li>
+            ) : null,
+          )}
+        </ul>
+      </Fragment>
+    );
+  }
+}
 
 export default HomePage;

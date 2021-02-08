@@ -1,16 +1,25 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import { fetchMovieReviews } from '../../services/movie-api';
+import ClassComponent from '../../decor/ClassComponent';
 
-const Reviews = () => {
+const Reviews = ({ data }) => {
+  if (data) {
     return (
-        <h1>
-           информация об обзорах 
-        </h1>
+      <ul>
+        {data.results.length > 0 ? (
+          data.results.map(el => (
+            <li key={el.id}>
+              <b>Author: {el.author}</b>
+              <p>{el.content}</p>
+            </li>
+          ))
+        ) : (
+          <span>We don't have any reviews for this movie</span>
+        )}
+      </ul>
     );
+  }
+  return null;
 };
 
-Reviews.propTypes = {
-    
-};
-
-export default Reviews;
+export default ClassComponent(Reviews, { fetchData: fetchMovieReviews });

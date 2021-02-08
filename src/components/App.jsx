@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import s from './App.module.css';
 
 const App = () => (
-  <>
-    <ul>
-      <li>
+  <div className={s.Nav}>
+    <ul className={s.NavList}>
+      <li className={s.NavElement}>
         <NavLink to="/" className={s.NavLink} activeClassName={s.NavLinkactive}>
           Home
         </NavLink>
@@ -16,7 +16,7 @@ const App = () => (
         </NavLink>
       </li>
     </ul>
-  </>
+  </div>
 );
 
 export default App;
